@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { setTimeout } from 'timers';
 
 @Component({
   //selector: 'app-servers',
@@ -7,14 +8,20 @@ import { Component, OnInit } from '@angular/core';
   //Colocando um . na frente definimos que o componente será identificado como classe
   selector: '.app-servers',
   //Colocando como template apenas, podemos colocar o código HTML dentro do typescript
-  //templateUrl: './servers.component.html',
+  templateUrl: './servers.component.html',
   //Usando ` podemos colocar várias linhas de código para descrever uma linha
-  template: `<app-server></app-server>`,
+  // template: `<app-server></app-server>`,
   styleUrls: ['./servers.component.css']
 })
 export class ServersComponent implements OnInit {
 
-  constructor() { }
+  allowNewServer: boolean = false;
+
+  constructor() { 
+    setTimeout(() =>{
+      this.allowNewServer = true;
+    }, 2000)
+  }
 
   ngOnInit() {
   }
