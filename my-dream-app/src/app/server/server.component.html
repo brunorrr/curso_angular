@@ -1,4 +1,9 @@
-<p>
+<!-- usar [] em torno da diretiva atribui um valor a uma propriedade da diretiva, por exemplo:
+{backgroundColor: getColor()} determina o valor do método getColor() para a propriedade 
+backgroundColor -->
+<!-- ngClass atribui uma, ou mais, classe ao elemento, com, ou sem, uma condição -->
+<p [ngStyle]="{backgroundColor: getColor()}"
+    [ngClass]="{online: serverStatus === 'online'}">
     {{ 10 * 5 }} Server with ID {{ serverId }} is {{ getServerStatus() }}
 </p>
 
