@@ -9,7 +9,8 @@ export class CockpitComponent implements OnInit {
   
   //Exporting serverCreated as an event
   @Output() serverCreated = new EventEmitter< {serverName: string, serverContent: string}>();
-  @Output() bluePrintCreated = new EventEmitter< {serverName: string, serverContent: string}>();
+  //Aliasing bluePrintCreated with 'bpCreated'
+  @Output('bpCreated') bluePrintCreated = new EventEmitter< {serverName: string, serverContent: string}>();
   newServerName = '';
   newServerContent = '';
 
