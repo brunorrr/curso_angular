@@ -24,5 +24,14 @@ export class AppComponent {
       content: bluePrintData.serverContent
     });
   }
+
+  onChangeFirstElement(){
+    this.serverElements[0].name ='Name Changed';
+  }
+
+  onDestroyFirstElement(){
+    if( this.serverElements.length > 0)
+      this.serverElements.splice(0, 1);
+  }
   
 }
