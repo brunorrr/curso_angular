@@ -17,4 +17,22 @@
   <hr>
   <app-game-control (numberGenerated)="onNumberGenerated($event)"></app-game-control>
   <hr>
+  <div class="row">
+    <div class="col-xs-6">
+      <h3>Even</h3>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let evenNumber of evenList">
+          <app-even [number]="evenNumber"></app-even>
+        </li>
+      </ul>
+    </div>
+    <div class="col-xs-6">
+      <h3>Odd</h3>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let oddNumer of oddList">
+          <app-odd [number]="oddNumer"></app-odd>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
