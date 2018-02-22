@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-cockpit',
@@ -11,8 +11,11 @@ export class CockpitComponent implements OnInit {
   @Output() serverCreated = new EventEmitter< {serverName: string, serverContent: string}>();
   //Aliasing bluePrintCreated with 'bpCreated'
   @Output('bpCreated') bluePrintCreated = new EventEmitter< {serverName: string, serverContent: string}>();
-  newServerName = '';
-  newServerContent = '';
+  // newServerName = '';
+  // newServerContent = '';
+  // Creating an attribute to CockpitComponent witch is a reference to HTML element with Angular ID 'serverContentInput'
+  // Unlike Local reference used on serverName, in this case, using ViewChild the variable created is a HTML Reference
+  @ViewChild('serverContentInput') serverContentInput: ElementRef;
 
   ngOnInit() {
   }
@@ -20,12 +23,12 @@ export class CockpitComponent implements OnInit {
   onAddServer( nameInput: HTMLInputElement /* type optional */ ) {
     //Calling event serverCreated
     this.serverCreated.emit({serverName: nameInput.value, 
-        serverContent: this.newServerContent});
+        serverContent: this.serverContentInput.nativeElement.value});
   }
 
   onAddBlueprint( nameInput ) {
     this.bluePrintCreated.emit({serverName: nameInput.value, 
-      serverContent: this.newServerContent});
+      serverContent: this.serverContentInput.nativeElement.value});
   }
 
 }
