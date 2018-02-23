@@ -14,13 +14,21 @@
               {{odd}}
             </li>
         </div>
-        <div *ngIf="!onlyOdd">
+        <!-- Using appUnless as a structure directive -->
+        <div *appUnless="onlyOdd">
             <li *ngFor="let even of evenNumbers"
             [ngClass]="{odd: even % 2 === 0}"
             class="list-group-item">
               {{even}}
             </li>
         </div>
+        <!-- <div *ngIf="!onlyOdd">
+            <li *ngFor="let even of evenNumbers"
+            [ngClass]="{odd: even % 2 === 0}"
+            class="list-group-item">
+              {{even}}
+            </li>
+        </div> -->
       </ul>
       <p appBasicHighlight>Style me with basic directive!</p>
       <!-- We can use [property]='"value"' and property='value', both case works -->
