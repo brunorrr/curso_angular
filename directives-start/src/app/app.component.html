@@ -35,6 +35,17 @@
       <!-- Aliasing the property with the same name of the directive allows we to set the value of the property directly on the directive -->
       <!-- in this case, appBetterHighlight='red' sets the value 'red' on a property inside the directive with the alias equals the directive name -->
       <p appBetterHighlight='red' defaultColor='yellow' >Style me with better directive!</p>
+
+      <!-- Here is an use of attribute directive and structure directive -->
+      <!-- ngSwitch is put as and property directive because the div is always rendered -->
+      <div [ngSwitch]="switchValue">
+        <!-- The *ngSwitchCase is a structure directive because sometimes the element is not rendered, so the DOM structure is changed -->
+        <p *ngSwitchCase="1">The value is 1</p>
+        <p *ngSwitchCase="2">The value is 2</p>
+        <p *ngSwitchCase="5">The value is 5</p>
+        <p *ngSwitchCase="10">The value is 10</p>
+        <p *ngSwitchDefault>The value is default, getting it: {{switchValue}}</p>
+      </div>
     </div>
   </div>
 </div>
