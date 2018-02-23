@@ -23,7 +23,10 @@
         </div>
       </ul>
       <p appBasicHighlight>Style me with basic directive!</p>
-      <p appBetterHighlight>Style me with better directive!</p>
+      <!-- We can use [property]='"value"' and property='value', both case works -->
+      <!-- Aliasing the property with the same name of the directive allows we to set the value of the property directly on the directive -->
+      <!-- in this case, appBetterHighlight='red' sets the value 'red' on a property inside the directive with the alias equals the directive name -->
+      <p appBetterHighlight='red' defaultColor='yellow' >Style me with better directive!</p>
     </div>
   </div>
 </div>
