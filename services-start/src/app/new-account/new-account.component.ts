@@ -8,7 +8,7 @@ import { AccountsService } from '../accounts.service';
   styleUrls: ['./new-account.component.css'],
   // The best way to use a service is with Dependency injetion, with this procedure, angular instantiate the attribute
   // We need to tell Angular what is the class that provides us the service, in this case LoggingService
-  providers: [LoggingService]
+  // providers: [LoggingService]
 })
 export class NewAccountComponent {
 
@@ -19,6 +19,6 @@ export class NewAccountComponent {
   onCreateAccount(accountName: string, accountStatus: string) {
     this.accountService.addAccount( accountName, accountStatus);
     // Now, with the provider instantiated and ready, we can call it
-    this.loggingService.logStatusChange(accountStatus);
+    // this.loggingService.logStatusChange(accountStatus);
   }
 }

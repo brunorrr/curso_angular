@@ -7,7 +7,7 @@ import { AccountsService } from './accounts.service';
   styleUrls: ['./app.component.css'],
   // when we tell to Angular this component access this provider
   // all child components will access the same instance of the provider
-  providers: [AccountsService]
+  // providers: [AccountsService]
 })
 export class AppComponent implements OnInit {
 
