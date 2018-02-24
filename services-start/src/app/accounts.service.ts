@@ -1,5 +1,5 @@
 import { LoggingService } from "./logging.service";
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 
 /*
     With the decorator Injectable this service can use other services,
@@ -22,6 +22,9 @@ export class AccountsService{
         status: 'unknown'
     }
     ];
+
+    // Using services to provides the comunication between two components
+    statusUpdated = new EventEmitter<string>();
 
     // If we want to access another service we need to pass the service as an argumento to the constructor
     constructor( private loggingService: LoggingService) {}

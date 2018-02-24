@@ -14,7 +14,13 @@ export class NewAccountComponent {
 
   // We need to pass the service provider as an argument to the constructor
   constructor(private loggingService: LoggingService,
-      private accountService: AccountsService){ }
+      private accountService: AccountsService){ 
+    // NewAccountComponent now is a listeners of the statusUpdated event of account service
+    // and a method(annon method, in this case) is called everytime that this event is triggered
+    this.accountService.statusUpdated.subscribe(
+      (status: string) => alert('New status' + status)
+    )
+  }
 
   onCreateAccount(accountName: string, accountStatus: string) {
     this.accountService.addAccount( accountName, accountStatus);

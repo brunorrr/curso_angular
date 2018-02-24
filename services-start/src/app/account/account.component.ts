@@ -19,5 +19,7 @@ export class AccountComponent {
   onSetTo(status: string) {
     this.accountService.updateStatus(this.id, status);
     // this.loggingService.logStatusChange(status);
+    // When the status is updated the AccountComponent will broadcast to all listeners what happened via accountService
+    this.accountService.statusUpdated.emit(status);
   }
 }
