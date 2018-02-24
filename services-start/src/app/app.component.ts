@@ -1,31 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AccountsService } from './accounts.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  // when we tell to Angular this component access this provider
+  // all child components will access the same instance of the provider
+  providers: [AccountsService]
 })
-export class AppComponent {
-  accounts = [
-    {
-      name: 'Master Account',
-      status: 'active'
-    },
-    {
-      name: 'Testaccount',
-      status: 'inactive'
-    },
-    {
-      name: 'Hidden Account',
-      status: 'unknown'
-    }
-  ];
+export class AppComponent implements OnInit {
 
-  onAccountAdded(newAccount: {name: string, status: string}) {
-    this.accounts.push(newAccount);
-  }
+  accounts: {name: string, status: string}[] = [];
 
-  onStatusChanged(updateInfo: {id: number, newStatus: string}) {
-    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  constructor( private accountService: AccountsService){}
+
+  ngOnInit(){
+    this.accounts = this.accountService.accounts;
   }
 }
