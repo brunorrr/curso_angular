@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
+import { UsersService } from './users.service';
+import { CounterService } from './counterservice.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [UsersService, CounterService]
 })
 export class AppComponent {
-  activeUsers = ['Max', 'Anna'];
-  inactiveUsers = ['Chris', 'Manu'];
 
-  onSetToInactive(id: number) {
-    this.inactiveUsers.push(this.activeUsers[id]);
-    this.activeUsers.splice(id, 1);
+  changes:number = 0;
+
+  constructor( private counterService:CounterService ){
+    this.counterService.changeAdded.subscribe(
+      (changesNumber: number) => this.changes = changesNumber
+    )
   }
 
-  onSetToActive(id: number) {
-    this.activeUsers.push(this.inactiveUsers[id]);
-    this.inactiveUsers.splice(id, 1);
-  }
 }
