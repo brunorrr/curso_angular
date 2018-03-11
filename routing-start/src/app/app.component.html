@@ -2,9 +2,11 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a href="#">Servers</a></li>
-        <li role="presentation"><a href="#">Users</a></li>
+        <!-- Using routerLink for changing the http ref without a page reload -->
+        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
+        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <!-- It can be used as with property binding -->
+        <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
       </ul>
     </div>
   </div>
