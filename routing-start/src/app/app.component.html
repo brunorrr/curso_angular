@@ -3,10 +3,18 @@
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
         <!-- Using routerLink for changing the http ref without a page reload -->
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="/servers">Servers</a></li>
+        <!-- With / the path is used as an absolute pass, without / it's used as a relative path -->
+        <!-- routerLinkActive change li class, when the active route is the given route on routerLink, the 'active' class is added to li -->
+        <!-- With routerLinkActiveOptions we can pass some arguments to routerlink, in this case we set 'exact' to true, and the 'active' class
+        is beeing active only if the exact path of the route is selected -->
+        <li role="presentation" 
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            <a routerLink="/">Home</a>
+          </li>
+        <li role="presentation" routerLinkActive="active"><a routerLink="/servers">Servers</a></li>
         <!-- It can be used as with property binding -->
-        <li role="presentation"><a [routerLink]="['/users']">Users</a></li>
+        <li role="presentation" routerLinkActive="active"><a [routerLink]="['/users']">Users</a></li>
       </ul>
     </div>
   </div>
