@@ -19,15 +19,19 @@ import { ServersService } from './servers/servers.service';
   the path witch is the HTTP path that is showed in address bar,
   the component witch is called when the path is set on URL
 
+  Using servers as a parent path
+
   PS: this constant do not modify the app by itself, this needs to be used by NgModule decorator
 */
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'users/:id/:name', component: UserComponent },
-  { path: 'servers', component: ServersComponent },
-  { path: 'servers/:id', component: ServerComponent },
-  { path: 'servers/:id/edit', component: EditServerComponent }
+  { path: 'users', component: UsersComponent, children: [
+    { path: ':id/:name', component: UserComponent }
+  ] },
+  { path: 'servers', component: ServersComponent, children: [
+    { path: ':id', component: ServerComponent },
+    { path: ':id/edit', component: EditServerComponent }
+  ] }
 ];
 
 @NgModule({
