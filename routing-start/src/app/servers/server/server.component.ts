@@ -35,7 +35,12 @@ export class ServerComponent implements OnInit, OnDestroy {
   }
 
   onEdit() {
-    this.router.navigate(['edit'], {relativeTo: this.route});
+    /*
+      queryParamsHandling allows you to deal with the current query string,
+      if you don't set this parameter The query will be reseted when the current view changes to this.
+      @see https://angular.io/api/router/NavigationExtras
+    */
+    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
   }
 
 }
