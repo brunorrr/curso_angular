@@ -32,7 +32,10 @@ const appRoutes: Routes = [
       canActivate only returns true or false, in this case the canActivate interface is implemented
       by AuthGuard
     */
-    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
+    { path: 'servers',
+    // canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    component: ServersComponent, children: [
       { path: ':id', component: ServerComponent },
       { path: ':id/edit', component: EditServerComponent }
     ] },
