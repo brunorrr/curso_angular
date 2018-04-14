@@ -8,6 +8,7 @@ import { ServersComponent } from './servers/servers.component';
 import { ServerComponent } from './servers/server/server.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuard } from './auth-guard.service';
 
 /*
   This is a constant array that contains all routes of our app,
@@ -26,7 +27,12 @@ const appRoutes: Routes = [
     { path: 'users', component: UsersComponent, children: [
       { path: ':id/:name', component: UserComponent }
     ] },
-    { path: 'servers', component: ServersComponent, children: [
+    /*
+      canActivate is a method that returns the permission of the user to access this path
+      canActivate only returns true or false, in this case the canActivate interface is implemented
+      by AuthGuard
+    */
+    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
       { path: ':id', component: ServerComponent },
       { path: ':id/edit', component: EditServerComponent }
     ] },
