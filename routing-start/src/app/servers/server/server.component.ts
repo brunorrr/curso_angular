@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -18,16 +18,28 @@ export class ServerComponent implements OnInit, OnDestroy {
     private router: Router) { }
 
   ngOnInit() {
-    // Making sure that the ID is a number
-    const id = +this.route.snapshot.params['id'];
-    this.server = this.serversService.getServer(id);
-    this.routeObserver = this.route.params.subscribe(
-      (params: Params) => {
-        this.server = this.serversService.getServer(
-          +params['id']
-        );
+    /*
+      Whenever the server id path params changes this method(inside subscribe)
+      will be called, ServerComponent has been injected with the server provider by
+      app Module, and this instance can be accessed by data['name of the instance'],
+      in this case data['server']
+    */
+    this.route.data.subscribe(
+      (data: Data) => {
+        this.server = data['server'];
       }
     );
+
+    // Making sure that the ID is a number
+    // const id = +this.route.snapshot.params['id'];
+    // this.server = this.serversService.getServer(id);
+    // this.routeObserver = this.route.params.subscribe(
+    //   (params: Params) => {
+    //     this.server = this.serversService.getServer(
+    //       +params['id']
+    //     );
+    //   }
+    // );
   }
 
   ngOnDestroy() {
