@@ -52,7 +52,11 @@ const appRoutes: Routes = [
       /*
         Importing RouterModule from Angular,
         The module is get by the method forRoot inside RouterModule and we pass the appRoutes as an argument to this method
+
+        useHash adds a # in the URL before the root path, it tells to the webserver that
+        all data after the # is not part of server's business, but part of application
       */
+    // RouterModule.forRoot( appRoutes, {useHash: true} )
     RouterModule.forRoot( appRoutes )
   ],
   // Exporting RouterModule with configurations
