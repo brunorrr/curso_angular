@@ -43,7 +43,7 @@ export class ServerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routeObserver.unsubscribe();
+    // this.routeObserver.unsubscribe();
   }
 
   onEdit() {
