@@ -1,3 +1,13 @@
 .container {
   margin-top: 30px;
 }
+
+/*
+  ng-invalid and ng-touched are directives defined automaticly by Angular
+  ng-invalid is set whenever the field does not meet the condition
+  ng-touched is set whenever the field gets clicked, or changed
+*/
+
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+  border: solid red 1px;
+}
