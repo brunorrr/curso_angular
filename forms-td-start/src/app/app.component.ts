@@ -9,12 +9,27 @@ import { NgForm } from '../../node_modules/@angular/forms';
 export class AppComponent {
 
   @ViewChild('f') signupForm: NgForm;
-  defaultQuestion = 'pet';
   answer = '';
   genders = ['male', 'female'];
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // Using setValue you need to pass all input values for the form
+    // this.signupForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ''
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'male'
+    // });
+    // Using patchValue you only need to pass the input values that you need
+    this.signupForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    });
   }
 
   // onSubmit(form: NgForm) {
