@@ -51,5 +51,8 @@ export class AppComponent {
     this.user.answer = this.signupForm.value.questionAnswer;
     this.user.gender = this.signupForm.value.gender;
     this.submitted = true;
+
+    // Reset everything in the form
+    this.signupForm.reset();
   }
 }
