@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <div class="col s12">
       <!-- Add a Form with the following Inputs (and Validators)
            1) Mail address (should not be empty and should be an email address)
            2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
@@ -13,6 +13,33 @@
            Upon submitting the form, you should simply print the Value of the Form to the Console.
            Optionally, display it in your template.
       -->
+      <form #f="ngForm" (ngSubmit)="onSubmit()">
+        <label for="email">E-mail:</label>
+        <input type="email" ngModel name="email" id="email" required email #email="ngModel" />
+        <span class="helper-text red-text text-accent-4" *ngIf="!email.valid && email.touched">Enter a valid email</span>
+
+        <label for="subscription">Select a Subscription:</label>
+        <select id="subscription" class="form-control" [ngModel]="defaultSubscription" name="subscription">
+          <option value="basic">Basic</option>
+          <option value="advanced">Advanced</option>
+          <option value="pro">Pro</option>
+        </select>
+
+        <label for="password">Type the password:</label>
+        <input type="password" name="password" id="password" ngModel required #password="ngModel" />
+        <span class="helper-text red-text text-accent-4" *ngIf="!password.valid && password.touched">Enter a valid password</span>
+
+        <input class="btn btn-primary" type="submit" [disabled]="!f.valid" value="Submit" />
+        <span class="helper-text red-text text-accent-4" *ngIf="f.invalid && f.touched">There is, at least, one invalid field in the form</span>
+      </form>
+    </div>
+    <div class="row" *ngIf="submitted">
+      <div class="col s12">
+        <h3>Your Data</h3>
+        <p>Mail: {{ user.email }}</p>
+        <p>Subscription: {{ user.subscription }}</p>
+        <p>Password: {{ user.password }}</p>
+      </div>
     </div>
   </div>
 </div>
