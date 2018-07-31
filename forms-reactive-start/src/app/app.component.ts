@@ -23,6 +23,20 @@ export class AppComponent implements OnInit {
         'hobbies': new FormArray([])
       })
     });
+    // this.signupForm.valueChanges.subscribe((value) => {
+    //   console.log(value);
+    // });
+
+    // this.signupForm.statusChanges.subscribe((value) => {
+    //   console.log(value);
+    // });
+
+    /*
+      this.signupForm.patchValue
+      patchValue can be used to set the value of a determined form control
+      this.signupForm.setValue
+      patchValue can be used to set the value of the whole form
+    */
   }
 
   onSubmit() {
