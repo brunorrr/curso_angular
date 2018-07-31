@@ -12,11 +12,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.signupForm = new FormGroup({
-      // You may wrap all attributes with single quote mark ' to help HTML code to identify this code
-      'username': new FormControl(null, Validators.required),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
-      'gender': new FormControl('male')
-    } );
+      'userData': new FormGroup({
+        // You may wrap all attributes with single quote mark ' to help HTML code to identify this code
+        'username': new FormControl(null, Validators.required),
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'gender': new FormControl('male')
+      })
+    });
   }
 
   onSubmit() {
