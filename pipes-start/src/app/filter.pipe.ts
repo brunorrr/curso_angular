@@ -1,7 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filter',
+  // Setting pure to false make Angular recall pipe whenever the output value is changed
+  pure: false
 })
 export class FilterPipe implements PipeTransform {
 
