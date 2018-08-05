@@ -33,4 +33,11 @@ export class ServerService {
       }));
   }
 
+  getAppName() {
+    return this.http.get('https://angular-course-784a1.firebaseio.com/appName.json')
+      .pipe(map((response: Response) => {
+        return response.json();
+      }));
+  }
+
 }
